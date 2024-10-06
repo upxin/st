@@ -1,9 +1,19 @@
-import { defineConfig, presetUno, presetAttributify } from 'unocss'
-import presetWebFonts from '@unocss/preset-web-fonts'
-import { createLocalFontProcessor } from '@unocss/preset-web-fonts/local'
-import presetIcons from '@unocss/preset-icons/browser'
+import { defineConfig, presetAttributify, presetUno } from 'unocss';
+import presetWebFonts from '@unocss/preset-web-fonts';
+import { createLocalFontProcessor } from '@unocss/preset-web-fonts/local';
+import presetIcons from '@unocss/preset-icons/browser';
 
 export default defineConfig({
+  theme: {
+    colors: {
+      fff: '#fff',
+      veryCool: '#0000ff', // class="text-very-cool"
+      brand: {
+        primary: 'hsl(var(--hue, 217) 78% 51%)', // class="bg-brand-primary"
+        DEFAULT: '#942192', // class="bg-brand"
+      },
+    },
+  },
   shortcuts: [
     { logo: 'i-logos-vue w-6em h-6em transform transition-800' },
   ],
@@ -35,11 +45,6 @@ export default defineConfig({
         'display': 'inline-block',
         'vertical-align': 'middle',
       },
-      // collections: {
-      //   carbon: () => import('@iconify-json/carbon/icons.json').then(i => i.default),
-      //   mdi: () => import('@iconify-json/mdi/icons.json').then(i => i.default),
-      //   logos: () => import('@iconify-json/logos/icons.json').then(i => i.default),
-      // }
     }),
   ],
-})
+});

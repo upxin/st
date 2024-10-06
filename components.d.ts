@@ -7,7 +7,9 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    NAffix: typeof import('naive-ui')['NAffix']
     NButton: typeof import('naive-ui')['NButton']
+    NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NIcon: typeof import('naive-ui')['NIcon']
     NMenu: typeof import('naive-ui')['NMenu']
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
