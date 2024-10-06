@@ -42,7 +42,7 @@ const menuOptions: MenuOption[] = [
   },
 ];
 
-type Origin = 'left' | 'right' | 'top' | 'bottom'
+type Origin = 'left' | 'right' | 'top' | 'bottom';
 function slide(origin: Origin) {
   return {
     duration: 800, // 动画持续时间
@@ -50,7 +50,7 @@ function slide(origin: Origin) {
     easing: 'ease-in-out', // 动画缓动效果
     origin, // 动画起始位置
     interval: 200, // 元素之间的动画间隔
-  }
+  };
 }
 
 function toast() {
@@ -61,31 +61,30 @@ onMounted(() => {
   ScrollReveal().reveal('.left', slide('left'));
   ScrollReveal().reveal('.right', slide('right'));
 });
-
 </script>
 
 <template>
-    <n-menu mode="horizontal" :options="menuOptions" responsive />
-    <n-button type="primary" @click="toast">
-      你好
-    </n-button>
-    <div bg-amber text-amber h-2000px></div>
-    <section class="flex justify-between overflow-hidden">
-      <h1 class="left h-200px">
-        Widget Inc.
-      </h1>
-      <h1 class="right h-200px">
-        Widget Inc.
-      </h1>
-    </section>
-    <section class="flex justify-between overflow-hidden">
-      <h1 class="left">
-        Widget Inc.
-      </h1>
-      <h1 class="right">
-        Widget Inc.
-      </h1>
-    </section>
+  <n-menu mode="horizontal" :options="menuOptions" responsive />
+  <n-button type="primary" @click="toast">
+    你好
+  </n-button>
+  <div bg-amber text-amber h-2000px></div>
+  <section class="flex justify-between overflow-hidden">
+    <h1 class="left h-200px">
+      Widget Inc.
+    </h1>
+    <h1 class="right h-200px">
+      Widget Inc.
+    </h1>
+  </section>
+  <section class="flex justify-between overflow-hidden">
+    <h1 class="left">
+      Widget Inc.
+    </h1>
+    <h1 class="right">
+      Widget Inc.
+    </h1>
+  </section>
 </template>
 
 <style lang="scss">
