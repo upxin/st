@@ -1,4 +1,9 @@
 {
+  "vueCompilerOptions": {
+    "plugins": [
+      "unplugin-vue-macros/volar"
+    ]
+  },
   "compilerOptions": {
     "target": "esnext",
     "jsx": "preserve",
@@ -25,7 +30,8 @@
       "vue/jsx",
       "vite/client",
       "./auto-imports.d.ts",
-      "./components.d.ts"
+      "./components.d.ts",
+      "unplugin-vue-macros/macros-global"
     ],
     "allowImportingTsExtensions": true,
     "allowJs": true,

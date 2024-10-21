@@ -1,8 +1,9 @@
 import { URL, fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
+import Vue from '@vitejs/plugin-vue';
+import VueJsx from '@vitejs/plugin-vue-jsx';
 import vueDevTools from 'vite-plugin-vue-devtools';
+import VueMacros from 'unplugin-vue-macros/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
@@ -10,9 +11,17 @@ import UnoCSS from 'unocss/vite';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
-    vueJsx(),
-    // vueDevTools(),
+    VueMacros({
+      plugins: {
+        vue: Vue({
+          include: [/\.vue$/, /\.setup\.[cm]?[jt]sx?$/],
+        }),
+        vueJsx: VueJsx(),
+        // vueRouter: VueRouter({ // if needed
+        //   extensions: ['.vue', '.setup.tsx']
+        // })
+      },
+    }),
     UnoCSS(),
     AutoImport({
       imports: [

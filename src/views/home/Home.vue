@@ -1,40 +1,21 @@
 <script lang="ts" setup>
 import type { GlobalThemeOverrides, MenuOption } from 'naive-ui';
 import { Check } from '@vicons/fa';
+import ScrollReveal from 'scrollreveal';
+import { menuOptions } from '@/utils/menu';
 import HomeImg from '@/assets/imgs/home.png';
 import Img10 from '@/assets/home/image10.png';
 import Img66 from '@/assets/home/image66.png';
 import Img67 from '@/assets/home/image67.png';
 import Img1 from '@/assets/home/image1.png';
+import hk2 from '@/assets/home/hk2.png';
+import hk3 from '@/assets/home/hk3.png';
+import hk4 from '@/assets/home/hk4.png';
+import hk5 from '@/assets/home/hk5.png';
 
+ScrollReveal({ reset: true });
+const router = useRouter();
 const message = useMessage();
-
-const menuOptions: MenuOption[] = [
-  {
-    label: '首页',
-    key: 'home',
-  },
-  {
-    label: '无人机平台 + AI识别',
-    key: 'ai',
-  },
-  {
-    label: '三维地图（数字孪生 ）',
-    key: '3dmap',
-  },
-  {
-    label: '数据建模（OSGB、3dmax）',
-    key: '3dmax',
-  },
-  {
-    label: '项目经验',
-    key: '3dmax',
-  },
-  {
-    label: '联系我们',
-    key: '3dmax',
-  },
-];
 
 type Origin = 'left' | 'right' | 'top' | 'bottom';
 function slide(origin: Origin) {
@@ -44,6 +25,7 @@ function slide(origin: Origin) {
     easing: 'ease-in-out', // 动画缓动效果
     origin, // 动画起始位置
     interval: 300, // 元素之间的动画间隔
+    viewFactor: 0.8,
   };
 }
 
@@ -52,14 +34,22 @@ function toast() {
 }
 
 onMounted(() => {
-  ScrollReveal().reveal('.left', slide('left'));
-  ScrollReveal().reveal('.right', slide('right'));
+  ScrollReveal().reveal('.left', {
+    ...slide('left'),
+    viewOffset: { top: 0, right: 0, bottom: 0, left: -50 }, // 确保不会超出左侧
+  });
+  ScrollReveal().reveal('.right', {
+    ...slide('right'),
+    viewOffset: { top: 0, right: -50, bottom: 0, left: 0 }, // 确保不会超出右侧
+  });
+
   ScrollReveal().reveal('.reveal', {
     duration: 1000, // 动画持续时间
     distance: '50px', // 元素移动的距离
     origin: 'bottom', // 动画的起点（可选：top, bottom, left, right）
     opacity: 0, // 初始透明度
     reset: true, // 每次滚动时重置动画
+    viewFactor: 0.8,
   });
 });
 
@@ -72,12 +62,15 @@ const themeOverrides: GlobalThemeOverrides = {
     textColor: '#fff',
   },
 };
+function selectMenu(key: string, item: MenuOption) {
+  router.push(key);
+}
 </script>
 
 <template>
   <n-config-provider :theme-overrides="themeOverrides" abstract>
     <section class="h-1000px bg-no-repeat relative" bg="100% 100%" :style="{ backgroundImage: `url(${HomeImg})` }">
-      <n-menu mode="horizontal" :options="menuOptions" responsive />
+      <n-menu mode="horizontal" :options="menuOptions" responsive value="home" @update:value="selectMenu" />
       <section class="mt-300px">
         <h1 class="text-center text-fff text-60px">
           数字化场景 构建专家工程
@@ -292,32 +285,32 @@ const themeOverrides: GlobalThemeOverrides = {
         面向丰富的业务场景，提供整套行业和技术解决方案
       </p>
     </section>
-    <section class="flex w-screen flex-nowrap" text="#fff">
-      <div class="right w-560px h-850px bg-cover bg-no-repeat relative" :style="{ backgroundImage: `url(${Img1})` }">
+    <section class="flex w-full flex-nowrap overflow-hidden" text="#fff">
+      <div class="right w-560px h-450px bg-cover bg-no-repeat relative" :style="{ backgroundImage: `url(${Img1})` }">
         <div class="center crad flex flex-col justify-center items-center">
           <span>航空航天</span>
           <span>Aerospace</span>
         </div>
       </div>
-      <div class="right flex-1 h-850px bg-cover bg-no-repeat relative" :style="{ backgroundImage: `url(${Img1})` }">
+      <div class="right flex-1 h-450px bg-cover bg-no-repeat relative" :style="{ backgroundImage: `url(${hk3})` }">
         <div class="center crad flex flex-col justify-center items-center">
           <span>航空航天</span>
           <span>Aerospace</span>
         </div>
       </div>
-      <div class="right flex-1 h-850px bg-cover bg-no-repeat relative" :style="{ backgroundImage: `url(${Img1})` }">
+      <div class="right flex-1 h-450px bg-cover bg-no-repeat relative" :style="{ backgroundImage: `url(${hk2})` }">
         <div class="center crad flex flex-col justify-center items-center">
           <span>航空航天</span>
           <span>Aerospace</span>
         </div>
       </div>
-      <div class="right flex-1 h-850px bg-cover bg-no-repeat relative" :style="{ backgroundImage: `url(${Img1})` }">
+      <div class="right flex-1 h-450px bg-cover bg-no-repeat relative" :style="{ backgroundImage: `url(${hk4})` }">
         <div class="center crad flex flex-col justify-center items-center">
           <span>航空航天</span>
           <span>Aerospace</span>
         </div>
       </div>
-      <div class="right w-260px h-850px bg-cover bg-no-repeat relative" :style="{ backgroundImage: `url(${Img1})` }">
+      <div class="right flex-1 h-450px bg-cover bg-no-repeat relative" :style="{ backgroundImage: `url(${hk5})` }">
         <div class="center crad flex flex-col justify-center items-center">
           <span>航空航天</span>
           <span>Aerospace</span>
@@ -347,5 +340,9 @@ const themeOverrides: GlobalThemeOverrides = {
   height: 98px;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 0px 0px 0px 0px;
+}
+
+body {
+  overflow-x: hidden; // 防止水平滚动条
 }
 </style>

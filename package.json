@@ -13,6 +13,7 @@
   "dependencies": {
     "@vueuse/core": "^10.11.0",
     "pinia": "^2.1.7",
+    "scrollreveal": "^4.0.9",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },
@@ -43,6 +44,7 @@
     "unocss": "^0.61.5",
     "unplugin-auto-import": "^0.18.2",
     "unplugin-vue-components": "^0.27.3",
+    "unplugin-vue-macros": "^2.13.0",
     "vfonts": "^0.0.3",
     "vite": "^5.3.1",
     "vite-plugin-vue-devtools": "^7.3.1",
