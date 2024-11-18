@@ -15,7 +15,7 @@ const router = createRouter({
     {
       name: '3dmax',
       path: '/3dmax',
-      component: () => import('@/views/data/Data.vue'),
+      component: () => import('@/views/3dmax/index.vue'),
     },
   ],
 });

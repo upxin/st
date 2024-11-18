@@ -69,7 +69,7 @@ function selectMenu(key: string, item: MenuOption) {
 
 <template>
   <n-config-provider :theme-overrides="themeOverrides" abstract>
-    <section class="h-1000px bg-no-repeat relative" bg="100% 100%" :style="{ backgroundImage: `url(${HomeImg})` }">
+    <section class="h-1000px bg-no-repeat relative bg-cover" bg="100% 100%" :style="{ backgroundImage: `url(${HomeImg})` }">
       <n-menu mode="horizontal" :options="menuOptions" responsive value="home" @update:value="selectMenu" />
       <section class="mt-300px">
         <h1 class="text-center text-fff text-60px">
