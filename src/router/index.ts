@@ -17,6 +17,11 @@ const router = createRouter({
       path: '/3dmax',
       component: () => import('@/views/3dmax/index.vue'),
     },
+    {
+      name: 'drones',
+      path: '/drones',
+      component: () => import('@/views/drones/index.vue'),
+    },
   ],
 });
 
