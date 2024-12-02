@@ -3,7 +3,7 @@ import type { MenuOption } from 'naive-ui';
 export const menuOptions: MenuOption[] = [
   {
     label: '首页',
-    key: 'home',
+    key: '/',
   },
   {
     label: '无人机平台 + AI识别',
