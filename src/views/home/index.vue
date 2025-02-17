@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import type { GlobalThemeOverrides, MenuOption } from 'naive-ui';
 import { Check } from '@vicons/fa';
-import ScrollReveal from 'scrollreveal';
 import HomeImg from '@/assets/imgs/home.png';
 import Img10 from '@/assets/home/image10.png';
 import Img66 from '@/assets/home/image66.png';
@@ -14,47 +13,17 @@ import hk5 from '@/assets/home/hk5.png';
 import us1 from '@/assets/home/us1.png';
 import us2 from '@/assets/home/us2.png';
 import us3 from '@/assets/home/us3.png';
-
 import building from '@/assets/home/building.png';
 
-ScrollReveal({ reset: true });
+defineOptions({
+  name:'Home'
+})
 const message = useMessage();
-
-type Origin = 'left' | 'right' | 'top' | 'bottom';
-function slide(origin: Origin) {
-  return {
-    duration: 800, // 动画持续时间
-    distance: '200px', // 移动距离
-    easing: 'ease-in-out', // 动画缓动效果
-    origin, // 动画起始位置
-    interval: 300, // 元素之间的动画间隔
-    viewFactor: 0.8,
-  };
-}
 
 function toast() {
   message.error('Once upon a time you dressed so fine');
 }
 
-onMounted(() => {
-  ScrollReveal().reveal('.left', {
-    ...slide('left'),
-    viewOffset: { top: 0, right: 0, bottom: 0, left: -50 }, // 确保不会超出左侧
-  });
-  ScrollReveal().reveal('.right', {
-    ...slide('right'),
-    viewOffset: { top: 0, right: -50, bottom: 0, left: 0 }, // 确保不会超出右侧
-  });
-
-  ScrollReveal().reveal('.reveal', {
-    duration: 1000, // 动画持续时间
-    distance: '50px', // 元素移动的距离
-    origin: 'bottom', // 动画的起点（可选：top, bottom, left, right）
-    opacity: 0, // 初始透明度
-    reset: true, // 每次滚动时重置动画
-    viewFactor: 0.5,
-  });
-});
 </script>
 
 <template>

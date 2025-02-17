@@ -1,8 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from "vue-router";
 
 // 动态导入 views 目录下的所有 index.vue 文件和 page.ts 文件
-const viewModules = import.meta.glob('../views/**/index.vue');
-const pageModules = import.meta.glob('../views/**/page.ts');
+const viewModules = import.meta.glob("../views/**/index.vue");
+const pageModules = import.meta.glob("../views/**/page.ts");
 
 const routes = Object.keys(viewModules).map((filePath) => {
   const folderName = filePath.match(/\/views\/(.*?)\//)[1];
@@ -16,13 +16,12 @@ const routes = Object.keys(viewModules).map((filePath) => {
   const meta = pageModules[pagePath] ? pageModules[pagePath]() : {};
 
   return {
-    path: path === '/home' ? '/' : path,
+    path: path,
     name: folderName,
     component,
     meta,
   };
 });
-console.log('routes===', routes)
 const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     // 如果存在保存的位置，返回保存的位置
@@ -34,7 +33,13 @@ const router = createRouter({
     }
   },
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
+  routes: [
+    {
+      path: "/",
+      redirect: "/home",
+    },
+    ...routes,
+  ],
 });
 
 export default router;
